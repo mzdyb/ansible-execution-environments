@@ -1,0 +1,10 @@
+2025-02-19T18:52:36.643658+00:00 WARNING 'ansible_navigator.image_manager.puller._log_message' Image inspection failed, image assumed to be corrupted or missing
+2025-02-19T18:52:36.644805+00:00 WARNING 'ansible_navigator.image_manager.puller._log_message' stdout: []
+
+2025-02-19T18:52:36.644859+00:00 WARNING 'ansible_navigator.image_manager.puller._log_message' stderr: Error: ghcr.io/ansible/creator-ee:v0.22.0: image not known
+
+2025-02-19T21:06:36.172315+00:00 WARNING 'ansible_navigator.image_manager.puller._log_message' Image inspection failed, image assumed to be corrupted or missing
+2025-02-19T21:06:36.172526+00:00 WARNING 'ansible_navigator.image_manager.puller._log_message' stdout: []
+
+2025-02-19T21:06:36.172581+00:00 WARNING 'ansible_navigator.image_manager.puller._log_message' stderr: Error: ghcr.io/ansible/creator-ee:v0.22.0: image not known
+
