@@ -1,1 +1,1 @@
-# Execution environments definitions for ansible-builder
+Execution environments definitions for ansible-builder
