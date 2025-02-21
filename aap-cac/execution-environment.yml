@@ -14,10 +14,13 @@ images:
 additional_build_files:
   - src: files/ansible.cfg
     dest: configs
+  - src: files/infra-aap_configuration_extended-1.0.0-devel.tar.gz
+    dest: collections
 
 additional_build_steps:
   prepend_galaxy:
     - ADD _build/configs/ansible.cfg ~/.ansible.cfg
+    - COPY _build/collections /tmp
 
     # List of servers to download collections
     - ENV ANSIBLE_GALAXY_SERVER_LIST=certified_content,validated_content,galaxy
@@ -50,6 +53,9 @@ dependencies:
       # - name: infra.aap_utilities  
       # - name: containers.podman # required for infra.ee_utilities
       # - name: infra.ee_utilities
+      - name: infra.aap_configuration_extended
+        type: file
+        source: /tmp/infra-aap_configuration_extended-1.0.0-devel.tar.gz
   system:
     - gcc [platform:rpm]
     - systemd-devel [platform:rpm]
@@ -57,4 +63,3 @@ dependencies:
 
   python_interpreter:
      python_path: "/usr/bin/python3.11"
-
