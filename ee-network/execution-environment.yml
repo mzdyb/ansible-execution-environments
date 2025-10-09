@@ -6,7 +6,7 @@ options:
 
 images:
   base_image:
-    name: registry.redhat.io/ansible-automation-platform-24/ee-minimal-rhel8:latest
+    name: registry.redhat.io/ansible-automation-platform-25/ee-minimal-rhel9:latest
 
 # build_arg_defaults:
 #   ANSIBLE_GALAXY_CLI_COLLECTION_OPTS: "--ignore-certs" # Ansible Builder doesn't support --ignore-certs, whereas the ansible-galaxy command supports this option
@@ -46,7 +46,7 @@ dependencies:
       - name: juniper.device
       - name: cisco.ios
       - name: arista.eos
-      - name: arista.avd
+      # - name: arista.avd
       - name: cisco.aci
       - name: network.base
       - name: network.acls
@@ -56,8 +56,15 @@ dependencies:
       - name: network.backup
       - name: network.telemetry
       - name: network.vpn
+      - name: check_point.mgmt
+      - name: check_point.gaia
       - name: community.general
       - name: ansible.posix
+      - name: amazon.aws
+      - name: fortinet.fortios
+      - name: fortinet.fmgdevice
+      - name: fortinet.fortimanager
+      - name: fortinet.fortianalyzer
 
   python:
     - pytz
@@ -70,8 +77,12 @@ dependencies:
     - xmltodict
     - jmespath
     - packaging
+    - paramiko
 
   system:
     - python3 >=3.9
+    - python3-pip
+    - python3-setuptools
+
   ansible_core:
-    package_pip: ansible-core>=2.14.0
+    package_pip: ansible-core>=2.16.0
