@@ -37,6 +37,8 @@ additional_build_steps:
     # Ansible Galaxy fallback
     - ENV ANSIBLE_GALAXY_SERVER_GALAXY_URL=https://galaxy.ansible.com/
 
+  append_final:
+    - RUN update-crypto-policies --set LEGACY
 
 dependencies:
   galaxy:
@@ -46,43 +48,53 @@ dependencies:
       - name: juniper.device
       - name: cisco.ios
       - name: arista.eos
-      # - name: arista.avd
+    #   # - name: arista.avd
       - name: cisco.aci
-      - name: network.base
-      - name: network.acls
-      - name: network.bgp
-      - name: network.ospf
-      - name: network.interfaces
-      - name: network.backup
-      - name: network.telemetry
-      - name: network.vpn
-      - name: check_point.mgmt
-      - name: check_point.gaia
-      - name: community.general
-      - name: ansible.posix
-      - name: amazon.aws
-      - name: fortinet.fortios
-      - name: fortinet.fmgdevice
-      - name: fortinet.fortimanager
-      - name: fortinet.fortianalyzer
+    #   - name: network.base
+    #   - name: network.acls
+    #   - name: network.bgp
+    #   - name: network.ospf
+    #   - name: network.interfaces
+    #   - name: network.backup
+    #   - name: network.telemetry
+    #   - name: network.vpn
+    #   - name: check_point.mgmt
+    #   - name: check_point.gaia
+    #   - name: community.general
+    #   - name: ansible.posix
+    #   - name: amazon.aws
+    #   - name: fortinet.fortios
+    #   - name: fortinet.fmgdevice
+    #   - name: fortinet.fortimanager
+    #   - name: fortinet.fortianalyzer
 
   python:
     - pytz
     - pynetbox
     - ncclient
     - ntc-templates
-    - genie
+    # - genie
     - pyats
     - jxmlease
     - xmltodict
     - jmespath
     - packaging
     - paramiko
+    - netaddr
+    - ansible-pylibssh
 
   system:
     - python3 >=3.9
-    - python3-pip
-    - python3-setuptools
+    # - python3-pip
+    # - python3-setuptools
+    - crypto-policies-scripts
+    # - gcc
+    # - systemd-devel
+    - gcc [platform:rpm]
+    - systemd-devel [platform:rpm]
+    - python3.11-devel [platform:rpm]
+  # ansible_core:
+  #   package_pip: ansible-core>=2.16.0
 
-  ansible_core:
-    package_pip: ansible-core>=2.16.0
+  python_interpreter:
+     python_path: "/usr/bin/python3.11"
